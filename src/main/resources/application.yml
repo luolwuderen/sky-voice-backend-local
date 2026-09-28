@@ -1,0 +1,112 @@
+# Sky Voice Backend Configuration
+
+sky-voice:
+  # LLM Configuration (DeepSeek 或 OpenAI 兼容)
+  llm:
+    api-url: ${LLM_API_URL:https://api.deepseek.com/v1/chat/completions}
+    api-key: ${LLM_API_KEY:sk-309282cb6a214f1faaacc876e51275b7}
+    model: ${LLM_MODEL:deepseek-chat}
+    temperature: 0.7
+    # 播客脚本生成：3 分钟 ≈ 750 字对话（JSON + 字符），需要足够的 max_tokens 让 LLM 输出完整内容
+    # 4000 对于 3 分钟 + 长篇输入文章容易截断，导致脚本严重偏短
+    max-tokens: ${LLM_MAX_TOKENS:8192}
+
+  # TTS Configuration — 多供应商支持，通过 active-provider 切换
+  tts:
+    # 当前使用的TTS供应商: QwenTTS / FishAudio / MiniMax / ElevenLabs
+    # 修改此项即可切换供应商，无需改代码
+    active-provider: ${TTS_PROVIDER:QwenTTS}
+
+    # 阿里云 Qwen-Audio-TTS（当前使用）
+    qwen:
+      # 北京地域专属域名（推荐，稳定/性能更高）
+      #   格式: https://${WorkspaceId}.cn-beijing.maas.aliyuncs.com/api/v1/services/audio/tts/SpeechSynthesizer
+      #   新加坡(出海): https://${WorkspaceId}.ap-southeast-1.maas.aliyuncs.com/api/v1/services/audio/tts/SpeechSynthesizer
+      # 若需覆盖整条 endpoint，设置环境变量 QWEN_TTS_API_URL 即可
+      api-url: ${QWEN_TTS_API_URL:https://llm-dnykj53ih2z2ffvr.cn-beijing.maas.aliyuncs.com/api/v1/services/audio/tts/SpeechSynthesizer}
+      # DashScope API Key — https://bailian.console.aliyun.com/ -> API-KEY 管理
+      # 强烈建议通过环境变量 QWEN_TTS_API_KEY 注入，避免把密钥写进代码库。
+      api-key: ${QWEN_TTS_API_KEY:sk-b04785e6f83d452a95295d0e03a94d44}
+      # WorkspaceId 用于参考记录（真实 endpoint 已经直接拼在上面 api-url）
+      work-space-id: "llm-dnykj53ih2z2ffvr"
+      # 模型 (注意和音色匹配，查列表用 GET /api/v1/tts/voices?model=...&lang=...)：
+      #   cosyvoice-v3-flash / cosyvoice-v3-plus       → longanyang / longanhuan / *_v3
+      #   cosyvoice-v2                                  → *_v2 后缀音色
+      #   qwen-audio-3.0-tts-flash / qwen-audio-3.0-tts-plus → longanhuan_v3.6 / loongeva_v3.6 / loongjohn
+      model: ${QWEN_TTS_MODEL:cosyvoice-v3-flash}
+      # 主持人声音ID（留空=代码默认按模型和语言查表）
+      # 可通过 GET /api/v1/tts/voices?model=...&lang=... 查可用列表
+      # 声音列表: https://help.aliyun.com/zh/model-studio/cosyvoice-voice-list
+      voice-a: ""
+      voice-b: ""
+
+    # Fish Audio（备用，需要时填入API Key并切换 active-provider）
+    fish-audio:
+      api-url: https://api.fish.audio/v1/tts
+      api-key: ${FISH_AUDIO_API_KEY:}
+      voice-a-zh: ""
+      voice-b-zh: ""
+      voice-a-en: ""
+      voice-b-en: ""
+      voice-a-ja: ""
+      voice-b-ja: ""
+
+    # MiniMax T2A（情感语音，多语种）
+    # 注册: https://platform.minimaxi.com
+    mini-max:
+      api-url: https://api.minimax.chat/v1/t2a_v2
+      api-key: ${MINIMAX_API_KEY:}
+      model: speech-2.6-hd
+      voice-a: ""  # 全局声音ID（留空则按语言选择下方配置）
+      voice-b: ""
+      # 按语言配置独立声音
+      voice-a-zh: "female-shaonv"
+      voice-b-zh: "male-qn-qingse"
+      voice-a-en: "English_expressive_1"
+      voice-b-en: "English_expressive_2"
+      voice-a-ja: "Japanese_Calm_Woman"
+      voice-b-ja: "Japanese_Calm_Man"
+
+    # ElevenLabs（海外主流，语种最全，价格较高）
+    # 注册: https://elevenlabs.io
+    eleven-labs:
+      api-url: https://api.elevenlabs.io/v1/text-to-speech
+      api-key: ${ELEVENLABS_API_KEY:}
+      model: eleven_multilingual_v2
+      voice-a: ""  # 全局声音ID（留空则按语言选择下方配置）
+      voice-b: ""
+      # 按语言配置独立声音（留空用代码中的硬编码默认值）
+      voice-a-zh: ""
+      voice-b-zh: ""
+      voice-a-en: ""
+      voice-b-en: ""
+      voice-a-ja: ""
+      voice-b-ja: ""
+
+  # Audio settings
+  audio:
+    output-dir: ${java.io.tmpdir}/sky-voice-output
+    segment-silence-ms: 800
+    fade-duration-ms: 1000
+
+  # Usage limits
+  limits:
+    free-monthly: 3
+    pro-monthly: 50
+    max-input-chars: 30000
+
+  # Apple IAP 配置（可选，留空则跳过服务端验证）
+  # 获取: App Store Connect → My Apps → App Information → App-Specific Shared Secret
+  iap:
+    shared-secret: ${IAP_SHARED_SECRET:}
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: sky-voice
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB

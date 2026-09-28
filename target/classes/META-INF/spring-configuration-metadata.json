@@ -1,0 +1,307 @@
+{
+  "groups": [
+    {
+      "name": "sky-voice",
+      "type": "com.skyvoice.config.AppConfig",
+      "sourceType": "com.skyvoice.config.AppConfig"
+    },
+    {
+      "name": "sky-voice.audio",
+      "type": "com.skyvoice.config.AppConfig$AudioConfig",
+      "sourceType": "com.skyvoice.config.AppConfig",
+      "sourceMethod": "getAudio()"
+    },
+    {
+      "name": "sky-voice.iap",
+      "type": "com.skyvoice.config.AppConfig$IapConfig",
+      "sourceType": "com.skyvoice.config.AppConfig",
+      "sourceMethod": "getIap()"
+    },
+    {
+      "name": "sky-voice.limits",
+      "type": "com.skyvoice.config.AppConfig$LimitsConfig",
+      "sourceType": "com.skyvoice.config.AppConfig",
+      "sourceMethod": "getLimits()"
+    },
+    {
+      "name": "sky-voice.llm",
+      "type": "com.skyvoice.config.AppConfig$LlmConfig",
+      "sourceType": "com.skyvoice.config.AppConfig",
+      "sourceMethod": "getLlm()"
+    },
+    {
+      "name": "sky-voice.tts",
+      "type": "com.skyvoice.config.AppConfig$TtsConfig",
+      "sourceType": "com.skyvoice.config.AppConfig",
+      "sourceMethod": "getTts()"
+    },
+    {
+      "name": "sky-voice.tts.eleven-labs",
+      "type": "com.skyvoice.config.AppConfig$ElevenLabsConfig",
+      "sourceType": "com.skyvoice.config.AppConfig$TtsConfig",
+      "sourceMethod": "getElevenLabs()"
+    },
+    {
+      "name": "sky-voice.tts.fish-audio",
+      "type": "com.skyvoice.config.AppConfig$FishAudioConfig",
+      "sourceType": "com.skyvoice.config.AppConfig$TtsConfig",
+      "sourceMethod": "getFishAudio()"
+    },
+    {
+      "name": "sky-voice.tts.mini-max",
+      "type": "com.skyvoice.config.AppConfig$MiniMaxConfig",
+      "sourceType": "com.skyvoice.config.AppConfig$TtsConfig",
+      "sourceMethod": "getMiniMax()"
+    },
+    {
+      "name": "sky-voice.tts.qwen",
+      "type": "com.skyvoice.config.AppConfig$QwenTTSConfig",
+      "sourceType": "com.skyvoice.config.AppConfig$TtsConfig",
+      "sourceMethod": "getQwen()"
+    }
+  ],
+  "properties": [
+    {
+      "name": "sky-voice.audio.fade-duration-ms",
+      "type": "java.lang.Integer",
+      "sourceType": "com.skyvoice.config.AppConfig$AudioConfig"
+    },
+    {
+      "name": "sky-voice.audio.output-dir",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$AudioConfig"
+    },
+    {
+      "name": "sky-voice.audio.segment-silence-ms",
+      "type": "java.lang.Integer",
+      "sourceType": "com.skyvoice.config.AppConfig$AudioConfig"
+    },
+    {
+      "name": "sky-voice.iap.shared-secret",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$IapConfig"
+    },
+    {
+      "name": "sky-voice.limits.free-monthly",
+      "type": "java.lang.Integer",
+      "sourceType": "com.skyvoice.config.AppConfig$LimitsConfig"
+    },
+    {
+      "name": "sky-voice.limits.max-input-chars",
+      "type": "java.lang.Integer",
+      "sourceType": "com.skyvoice.config.AppConfig$LimitsConfig"
+    },
+    {
+      "name": "sky-voice.limits.pro-monthly",
+      "type": "java.lang.Integer",
+      "sourceType": "com.skyvoice.config.AppConfig$LimitsConfig"
+    },
+    {
+      "name": "sky-voice.llm.api-key",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$LlmConfig"
+    },
+    {
+      "name": "sky-voice.llm.api-url",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$LlmConfig"
+    },
+    {
+      "name": "sky-voice.llm.max-tokens",
+      "type": "java.lang.Integer",
+      "sourceType": "com.skyvoice.config.AppConfig$LlmConfig"
+    },
+    {
+      "name": "sky-voice.llm.model",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$LlmConfig"
+    },
+    {
+      "name": "sky-voice.llm.temperature",
+      "type": "java.lang.Double",
+      "sourceType": "com.skyvoice.config.AppConfig$LlmConfig"
+    },
+    {
+      "name": "sky-voice.tts.active-provider",
+      "type": "java.lang.String",
+      "description": "当前使用的供应商: QwenTTS \/ FishAudio \/ MiniMax \/ ElevenLabs",
+      "sourceType": "com.skyvoice.config.AppConfig$TtsConfig"
+    },
+    {
+      "name": "sky-voice.tts.eleven-labs.api-key",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$ElevenLabsConfig"
+    },
+    {
+      "name": "sky-voice.tts.eleven-labs.api-url",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$ElevenLabsConfig"
+    },
+    {
+      "name": "sky-voice.tts.eleven-labs.model",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$ElevenLabsConfig"
+    },
+    {
+      "name": "sky-voice.tts.eleven-labs.voice-a",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$ElevenLabsConfig"
+    },
+    {
+      "name": "sky-voice.tts.eleven-labs.voice-a-en",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$ElevenLabsConfig"
+    },
+    {
+      "name": "sky-voice.tts.eleven-labs.voice-a-ja",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$ElevenLabsConfig"
+    },
+    {
+      "name": "sky-voice.tts.eleven-labs.voice-a-zh",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$ElevenLabsConfig"
+    },
+    {
+      "name": "sky-voice.tts.eleven-labs.voice-b",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$ElevenLabsConfig"
+    },
+    {
+      "name": "sky-voice.tts.eleven-labs.voice-b-en",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$ElevenLabsConfig"
+    },
+    {
+      "name": "sky-voice.tts.eleven-labs.voice-b-ja",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$ElevenLabsConfig"
+    },
+    {
+      "name": "sky-voice.tts.eleven-labs.voice-b-zh",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$ElevenLabsConfig"
+    },
+    {
+      "name": "sky-voice.tts.fish-audio.api-key",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$FishAudioConfig"
+    },
+    {
+      "name": "sky-voice.tts.fish-audio.api-url",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$FishAudioConfig"
+    },
+    {
+      "name": "sky-voice.tts.fish-audio.voice-a-en",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$FishAudioConfig"
+    },
+    {
+      "name": "sky-voice.tts.fish-audio.voice-a-ja",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$FishAudioConfig"
+    },
+    {
+      "name": "sky-voice.tts.fish-audio.voice-a-zh",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$FishAudioConfig"
+    },
+    {
+      "name": "sky-voice.tts.fish-audio.voice-b-en",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$FishAudioConfig"
+    },
+    {
+      "name": "sky-voice.tts.fish-audio.voice-b-ja",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$FishAudioConfig"
+    },
+    {
+      "name": "sky-voice.tts.fish-audio.voice-b-zh",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$FishAudioConfig"
+    },
+    {
+      "name": "sky-voice.tts.mini-max.api-key",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$MiniMaxConfig"
+    },
+    {
+      "name": "sky-voice.tts.mini-max.api-url",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$MiniMaxConfig"
+    },
+    {
+      "name": "sky-voice.tts.mini-max.model",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$MiniMaxConfig"
+    },
+    {
+      "name": "sky-voice.tts.mini-max.voice-a",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$MiniMaxConfig"
+    },
+    {
+      "name": "sky-voice.tts.mini-max.voice-a-en",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$MiniMaxConfig"
+    },
+    {
+      "name": "sky-voice.tts.mini-max.voice-a-ja",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$MiniMaxConfig"
+    },
+    {
+      "name": "sky-voice.tts.mini-max.voice-a-zh",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$MiniMaxConfig"
+    },
+    {
+      "name": "sky-voice.tts.mini-max.voice-b",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$MiniMaxConfig"
+    },
+    {
+      "name": "sky-voice.tts.mini-max.voice-b-en",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$MiniMaxConfig"
+    },
+    {
+      "name": "sky-voice.tts.mini-max.voice-b-ja",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$MiniMaxConfig"
+    },
+    {
+      "name": "sky-voice.tts.mini-max.voice-b-zh",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$MiniMaxConfig"
+    },
+    {
+      "name": "sky-voice.tts.qwen.api-key",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$QwenTTSConfig"
+    },
+    {
+      "name": "sky-voice.tts.qwen.api-url",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$QwenTTSConfig"
+    },
+    {
+      "name": "sky-voice.tts.qwen.model",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$QwenTTSConfig"
+    },
+    {
+      "name": "sky-voice.tts.qwen.voice-a",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$QwenTTSConfig"
+    },
+    {
+      "name": "sky-voice.tts.qwen.voice-b",
+      "type": "java.lang.String",
+      "sourceType": "com.skyvoice.config.AppConfig$QwenTTSConfig"
+    }
+  ],
+  "hints": []
+}
